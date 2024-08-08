@@ -22,8 +22,8 @@ public class JPAStarterRead {
 //        PayStub payStub = entityManager.find(PayStub.class, 5);
 //        System.out.println(payStub.getEmployee());
 
-        Employee employee = entityManager.find(Employee.class, 1);
-        System.out.println("Employee Paystubs" + employee.getPayStubs());
+//        Employee employee = entityManager.find(Employee.class, 1);
+//        System.out.println("Employee Paystubs" + employee.getPayStubs());
 
     }
 }

@@ -7,10 +7,15 @@ public class PayStub {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name = "startDate")
     private Date payPeriodStart;
+
+    @Column(name = "endDate")
     private Date payPeriodEnd;
     private float salary;
     @ManyToOne
+    @JoinColumn(name = "payStub_for")
     private Employee employee;
 
     public Employee getEmployee() {
