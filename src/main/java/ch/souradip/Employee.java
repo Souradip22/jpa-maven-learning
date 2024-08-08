@@ -9,7 +9,7 @@ import java.util.Date;
 )
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "employee_name", length = 100)
     private String name;
@@ -19,6 +19,17 @@ public class Employee {
     private EmployeeType employeeType;
     @Transient
     private String debugString;
+
+    @OneToOne
+    private AccessCard accessCard;
+
+    public AccessCard getAccessCard() {
+        return accessCard;
+    }
+
+    public void setAccessCard(AccessCard accessCard) {
+        this.accessCard = accessCard;
+    }
 
     public EmployeeType getEmployeeType() {
         return employeeType;
@@ -69,6 +80,7 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", ssn='" + ssn + '\'' +
                 ", employeeType=" + employeeType +
+                ", accessCard=" + accessCard +
                 ", dob=" + dob +
                 '}';
     }

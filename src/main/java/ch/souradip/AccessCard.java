@@ -1,9 +1,6 @@
 package ch.souradip;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -14,6 +11,17 @@ public class AccessCard {
     private Date issuedDate;
     private boolean isActive;
     private String firmwareVersion;
+
+    @OneToOne(mappedBy = "accessCard")
+    private Employee owner;
+
+    public Employee getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Employee owner) {
+        this.owner = owner;
+    }
 
     public int getId() {
         return id;
@@ -45,5 +53,15 @@ public class AccessCard {
 
     public void setFirmwareVersion(String firmwareVersion) {
         this.firmwareVersion = firmwareVersion;
+    }
+
+    @Override
+    public String toString() {
+        return "AccessCard{" +
+                "id=" + id +
+                ", issuedDate=" + issuedDate +
+                ", isActive=" + isActive +
+                ", firmwareVersion='" + firmwareVersion + '\'' +
+                '}';
     }
 }
