@@ -10,27 +10,6 @@ public class JPAStarterWrite {
     public static void main(String[] args) {
 
 
-
-
-
-
-        //Delete operation example
-//        EntityTransaction transaction = entityManager.getTransaction();
-//        transaction.begin();
-//        entityManager.remove(employee);
-//        transaction.commit();
-
-        //Update operation example
-//        employee.setName("Updated Name");
-//        EntityTransaction transaction = entityManager.getTransaction();
-//        transaction.begin();
-//        entityManager.persist(employee);
-//
-//        transaction.commit();
-
-
-        // Perform Insert/create operation example
-
         Employee employee = new Employee();
         employee.setName("Test User");
         employee.setSsn("1223");
@@ -58,16 +37,37 @@ public class JPAStarterWrite {
         card2.setOwner(employee2);
         employee2.setAccessCard(card2);
 
+        PayStub payStub1 = new PayStub();
+        payStub1.setPayPeriodStart(new Date());
+        payStub1.setPayPeriodEnd(new Date());
+        payStub1.setSalary(10000);
+        payStub1.setEmployee(employee);
+        employee.addPayStub(payStub1);
+
+        PayStub payStub2 = new PayStub();
+        payStub2.setPayPeriodStart(new Date());
+        payStub2.setPayPeriodEnd(new Date());
+        payStub2.setSalary(20000);
+        payStub2.setEmployee(employee);
+        employee.addPayStub(payStub2);
+
+
+
+
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
+
         entityManager.persist(employee);
         entityManager.persist(employee2);
 
         entityManager.persist(card1);
         entityManager.persist(card2);
+
+        entityManager.persist(payStub1);
+        entityManager.persist(payStub2);
 
         transaction.commit();
 

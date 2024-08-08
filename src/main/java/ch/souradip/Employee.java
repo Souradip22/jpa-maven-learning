@@ -1,7 +1,9 @@
 package ch.souradip;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(
@@ -22,6 +24,16 @@ public class Employee {
 
     @OneToOne
     private AccessCard accessCard;
+    @OneToMany(mappedBy = "employee")
+    private List<PayStub> payStubs = new ArrayList<>();
+
+    public List<PayStub> getPayStubs() {
+        return payStubs;
+    }
+
+    public void setPayStubs(List<PayStub> payStubs) {
+        this.payStubs = payStubs;
+    }
 
     public AccessCard getAccessCard() {
         return accessCard;
@@ -71,6 +83,10 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public void addPayStub(PayStub payStub){
+        this.payStubs.add(payStub);
+
     }
 
     @Override

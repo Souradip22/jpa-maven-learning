@@ -16,8 +16,14 @@ public class JPAStarterRead {
 //        System.out.println("************ Fetch AccessCard");
 //        System.out.println(employee.getAccessCard());
 
-        AccessCard card = entityManager.find(AccessCard.class, 3);
-        System.out.println(card.getOwner());
+//        AccessCard card = entityManager.find(AccessCard.class, 3);
+//        System.out.println(card.getOwner());
+
+//        PayStub payStub = entityManager.find(PayStub.class, 5);
+//        System.out.println(payStub.getEmployee());
+
+        Employee employee = entityManager.find(Employee.class, 1);
+        System.out.println("Employee Paystubs" + employee.getPayStubs());
 
     }
 }
