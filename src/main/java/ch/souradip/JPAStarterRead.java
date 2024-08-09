@@ -25,5 +25,9 @@ public class JPAStarterRead {
 //        Employee employee = entityManager.find(Employee.class, 1);
 //        System.out.println("Employee Paystubs" + employee.getPayStubs());
 
+        EmailGroup emailGroup = entityManager.find(EmailGroup.class, 7);
+        System.out.println(emailGroup.getMembers());
+
+
     }
 }

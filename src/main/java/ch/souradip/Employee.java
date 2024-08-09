@@ -27,6 +27,11 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     private List<PayStub> payStubs = new ArrayList<>();
     @ManyToMany
+    @JoinTable(
+            name = "EMAIL_GROUP_SUBSCRIPTIONS",
+            joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "EMAIL_SUBSCRIPTION_ID")
+    )
     private List<EmailGroup> emailGroups = new ArrayList<>();
 
     public List<PayStub> getPayStubs() {
