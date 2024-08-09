@@ -26,6 +26,8 @@ public class Employee {
     private AccessCard accessCard;
     @OneToMany(mappedBy = "employee")
     private List<PayStub> payStubs = new ArrayList<>();
+    @ManyToMany
+    private List<EmailGroup> emailGroups = new ArrayList<>();
 
     public List<PayStub> getPayStubs() {
         return payStubs;
@@ -98,5 +100,8 @@ public class Employee {
                 ", accessCard=" + accessCard +
                 ", dob=" + dob +
                 '}';
+    }
+    public void addToEmailGroups(EmailGroup group){
+        this.emailGroups.add(group);
     }
 }

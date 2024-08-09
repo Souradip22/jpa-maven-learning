@@ -52,7 +52,17 @@ public class JPAStarterWrite {
         employee.addPayStub(payStub2);
 
 
+        EmailGroup group1 = new EmailGroup();
+        group1.setName("Group 1 discussion");
+        group1.addMembers(employee);
+        group1.addMembers(employee2);
+        employee.addToEmailGroups(group1);
+        employee2.addToEmailGroups(group1);
 
+        EmailGroup group2 = new EmailGroup();
+        group2.setName("Group 2 discussion");
+        group2.addMembers(employee2);
+        employee2.addToEmailGroups(group2);
 
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
@@ -68,6 +78,9 @@ public class JPAStarterWrite {
 
         entityManager.persist(payStub1);
         entityManager.persist(payStub2);
+
+        entityManager.persist(group1);
+        entityManager.persist(group2);
 
         transaction.commit();
 
