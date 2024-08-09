@@ -24,7 +24,7 @@ public class Employee {
 
     @OneToOne
     private AccessCard accessCard;
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
     private List<PayStub> payStubs = new ArrayList<>();
     @ManyToMany
     @JoinTable(
