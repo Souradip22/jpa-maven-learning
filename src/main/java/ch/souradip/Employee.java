@@ -9,6 +9,8 @@ import java.util.List;
 @Table(
         name = "EMPLOYEE_DATA"
 )
+@NamedQuery(query = "select e from Employee e order by e.name asc", name = "emp name asc")
+@NamedQuery(query = "select e from Employee e order by e.name desc", name = "emp name desc")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +23,8 @@ public class Employee {
     private EmployeeType employeeType;
     @Transient
     private String debugString;
+
+    private int age;
 
     @OneToOne
     private AccessCard accessCard;
@@ -40,6 +44,14 @@ public class Employee {
 
     public void setPayStubs(List<PayStub> payStubs) {
         this.payStubs = payStubs;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public AccessCard getAccessCard() {
@@ -103,6 +115,7 @@ public class Employee {
                 ", ssn='" + ssn + '\'' +
                 ", employeeType=" + employeeType +
                 ", accessCard=" + accessCard +
+                ", age=" + age +
                 ", dob=" + dob +
                 '}';
     }

@@ -11,15 +11,17 @@ public class JPAStarterWrite {
 
 
         Employee employee = new Employee();
-        employee.setName("Test User");
+        employee.setName("Foo bar");
         employee.setSsn("1223");
         employee.setDob(new Date());
+        employee.setAge(25);
         employee.setEmployeeType(EmployeeType.FULL_TIME);
 
         Employee employee2 = new Employee();
-        employee2.setName("Test User 2");
+        employee2.setName("John doe");
         employee2.setSsn("234");
         employee2.setDob(new Date());
+        employee2.setAge(40);
         employee2.setEmployeeType(EmployeeType.CONTRACTOR);
 
 
